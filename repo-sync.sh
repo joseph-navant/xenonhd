@@ -1,2 +1,2 @@
 cd ~/xenon
-repo sync -j32 > /dev/null
+repo sync -j32 q
