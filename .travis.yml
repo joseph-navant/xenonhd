@@ -1,2 +1,5 @@
-install: ./install-dependencies.sh
-script: ./repoSync.sh
+install: 
+  ./install-dependencies.sh
+  ./repo-init.sh
+  ./set-git-config.sh
+script: ./repo-sync.sh
