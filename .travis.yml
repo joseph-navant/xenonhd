@@ -1,3 +1,7 @@
-before_install:
+script:
   mkdir -p ~/bin
   mkdir -p ~/xenon
+  curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
+  cd ~/xenon
+  repo init -u https://github.com/joseph184/platform_manifest.git -b o
+  repo sync -j16
