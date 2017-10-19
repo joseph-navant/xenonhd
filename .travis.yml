@@ -1,3 +1,0 @@
-before_install:
-  mkdir -p ~/bin
-  mkdir -p ~/xenon
