@@ -1,2 +1,4 @@
+dist: xenial
+language: cpp
 install: ./install-dependencies.sh
 script: ./repo-sync.sh
