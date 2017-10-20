@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: ubuntu:16.04
-    working_directory: ~/
+    working_directory: ~
     steps:
       - checkout
       - run:
