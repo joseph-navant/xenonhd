@@ -1,3 +1,5 @@
 language: cpp
 install: ./install-dependencies.sh
+before_script: ./repo-init.sh
 script: ./repo-sync.sh
+after_script: df -h
