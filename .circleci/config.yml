@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ubuntu:16.04
+      - image: circleci/python:latest
     steps:
       - checkout
       - run:
@@ -10,8 +10,7 @@ jobs:
           command: |
             mkdir -p ~/bin
             mkdir -p ~/xenon
-            apt-get update
-            apt-get install curl git -y
+            
             curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
       - run:
           name: Repo init
