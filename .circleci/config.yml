@@ -7,10 +7,20 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: ./install-dependencies.sh
+          command: |
+            mkdir -p ~/bin
+            mkdir -p ~/xenon
+            curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
       - run:
           name: Repo init
-          command: ./repo-init.sh
+          command: |
+            cd ~/xenon
+            git config --global user.name 'Joseph Morant Navarro'
+            git config --global user.email 'joseph.morantnavarro@gmail.com'
+            git config --global color.ui true
+            repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
       - run:
           name: Repo sync
-          command: ./repo-sync.sh
+          command: |
+            cd ~/xenon
+            repo sync -c -j32 --quiet
