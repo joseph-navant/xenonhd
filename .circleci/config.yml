@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: ubuntu:16.04
-    working_directory: ~
     steps:
       - checkout
       - run:
@@ -21,12 +20,12 @@ jobs:
             git config --global user.name 'Joseph Morant Navarro'
             git config --global user.email 'joseph.morantnavarro@gmail.com'
             git config --global color.ui true
-            repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
+            ~/bin/repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
       - run:
           name: Repo sync
           command: |
             cd ~/xenon
-            repo sync -c -j32 --quiet
+            ~/bin/repo sync -c -j32 --quiet
       - run:
           name: Space left
           command: df -h
