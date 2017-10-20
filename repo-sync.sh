@@ -1,2 +1,2 @@
 cd ~/xenon
-repo sync -j32 --depth 1 --quiet
+repo sync -c -j32 --depth=1 --quiet
