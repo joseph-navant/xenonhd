@@ -11,7 +11,7 @@ jobs:
             mkdir -p ~/bin
             mkdir -p ~/xenon
             apt-get update
-            apt-get install curl
+            apt-get install curl -y
             curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
       - run:
           name: Repo init
