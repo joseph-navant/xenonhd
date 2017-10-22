@@ -12,4 +12,7 @@ before_script:
 script:
   - cd ~/xenon
   - repo sync -c -j32 --quiet 
+  - . build/envsetup.sh
+  - breakfast hydrogen
+  - brunch hydrogen
 after_script: df -h
