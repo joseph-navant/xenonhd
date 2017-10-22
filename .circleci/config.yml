@@ -14,24 +14,16 @@ jobs:
       - run:
           name: Repo init
           command: |
-            cd ~/xenon
             git config --global user.name 'Joseph Morant Navarro'
             git config --global user.email 'joseph.morantnavarro@gmail.com'
             git config --global color.ui true
-            ~/bin/repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
+            cd ~/xenon && ~/bin/repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
       - run:
           name: Repo sync
-          command: |
-            cd ~/xenon
-            ~/bin/repo sync -c -j32 --quiet
+          command: cd ~/xenon && ~/bin/repo sync -c -j32 --quiet
       - run:
           name: Building
-          command: |
-            cd ~/xenon
-            . build/envsetup.sh
-            breakfast hydrogen
-            brunch hydrogen
-
+          command: cd ~/xenon && . build/envsetup.sh && breakfast hydrogen && brunch hydrogen
       - run:
           name: Space left
           command: df -h
