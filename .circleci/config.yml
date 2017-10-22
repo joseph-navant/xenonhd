@@ -26,10 +26,13 @@ jobs:
             ~/bin/repo sync -c -j32 --quiet
       - run:
           name: Environment set up
-          command: . build/envsetup.sh
+          command: |
+            cd ~/xenon
+            . build/envsetup.sh
       - run:
           name: Building
           command: |
+            cd ~/xenon
             breakfast hydrogen
             brunch hydrogen
 
