@@ -25,14 +25,10 @@ jobs:
             cd ~/xenon
             ~/bin/repo sync -c -j32 --quiet
       - run:
-          name: Environment set up
-          command: |
-            cd ~/xenon
-            . build/envsetup.sh
-      - run:
           name: Building
           command: |
             cd ~/xenon
+            . build/envsetup.sh
             breakfast hydrogen
             brunch hydrogen
 
