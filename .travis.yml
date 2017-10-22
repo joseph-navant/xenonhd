@@ -11,8 +11,10 @@ before_script:
   - repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
 script:
   - cd ~/xenon
-  - repo sync -c -j32 --quiet 
+  - repo sync -c -j32 --quiet
+after_script:
+  - cd ~/xenon
   - . build/envsetup.sh
   - breakfast hydrogen
   - brunch hydrogen
-after_script: df -h
+  - df -h
