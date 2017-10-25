@@ -26,8 +26,9 @@ jobs:
       - run:
           name: Adding hydrogen device
           command: |
+            export PATH=$PATH:~/bin
             cp -r --parents .repo ~/xenon
-            repo sync -j4 --quiet
+            repo sync -c -j4 --quiet
       - run:
           name: Building
           command: |
