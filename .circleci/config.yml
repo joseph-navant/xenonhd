@@ -20,10 +20,12 @@ jobs:
             mkdir -p ~/xenon && cd ~/xenon && repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
       - run:
           name: Repo sync
-          command: cd ~/xenon && repo sync -c -j32 --quiet
-      - run:
-          name: Adding hydrogen device
-          command: cp -r --parents device/xiaomi/hydrogen ~/xenon
+          command: |
+            export PATH=$PATH:~/bin
+            cd ~/xenon && repo sync -c -j32 --quiet
+      # - run:
+      #     name: Adding hydrogen device
+      #     command: cp -r --parents device/xiaomi ~/xenon
       - run:
           name: Building
           command: cd ~/xenon && . build/envsetup.sh && breakfast hydrogen && brunch hydrogen
