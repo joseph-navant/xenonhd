@@ -22,13 +22,13 @@ jobs:
           name: Repo sync
           command: |
             export PATH=$PATH:~/bin
-            cd ~/xenon && repo sync -c -j4 --quiet
+            cd ~/xenon && repo sync -c -n -j 4 --quiet && repo sync -c -l -j 16 --quiet
       - run:
           name: Adding hydrogen device
           command: |
             export PATH=$PATH:~/bin
             cp -r --parents .repo ~/xenon
-            repo sync -c -j4 --quiet
+            cd ~/xenon && repo sync -c -n -j 4 --quiet && repo sync -c -l -j 16 --quiet
       - run:
           name: Building
           command: |
