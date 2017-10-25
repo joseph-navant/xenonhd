@@ -11,16 +11,20 @@ jobs:
             mkdir -p ~/bin
             mkdir -p ~/xenon
             curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
+            export PATH=$PATH:~/bin
       - run:
           name: Repo init
           command: |
             git config --global user.name 'Joseph Morant Navarro'
             git config --global user.email 'joseph.morantnavarro@gmail.com'
             git config --global color.ui true
-            cd ~/xenon && ~/bin/repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
+            cd ~/xenon && repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
       - run:
           name: Repo sync
-          command: cd ~/xenon && ~/bin/repo sync -c -j32 --quiet
+          command: cd ~/xenon && repo sync -c -j32 --quiet
+      - run:
+          name: Adding hydrogen device
+          command: cp -r --parents device/xiaomi/hydrogen ~/xenon
       - run:
           name: Building
           command: cd ~/xenon && . build/envsetup.sh && breakfast hydrogen && brunch hydrogen
