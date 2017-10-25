@@ -22,18 +22,21 @@ jobs:
           name: Repo sync
           command: |
             export PATH=$PATH:~/bin
-            cd ~/xenon && repo sync -c -n -j 4 --quiet && repo sync -c -l -j 16 --quiet
+            cd ~/xenon && repo sync -c -n -j 4 --quiet && repo sync -c -l -j 8 --quiet
       - run:
           name: Adding hydrogen device
           command: |
             export PATH=$PATH:~/bin
             cp -r --parents .repo ~/xenon
-            cd ~/xenon && repo sync -c -n -j 4 --quiet && repo sync -c -l -j 16 --quiet
+            cd ~/xenon && repo sync -c -n -j 4 --quiet && repo sync -c -l -j 8 --quiet
       - run:
-          name: Building
+          name: Breakfast
           command: |
             export PATH=$PATH:~/bin
-            cd ~/xenon && . build/envsetup.sh && breakfast hydrogen && brunch hydrogen
+            cd ~/xenon && . build/envsetup.sh && breakfast hydrogen
       - run:
           name: Space left
           command: df -h
+      - run:
+          name: Brunch
+          command: cd ~/xenon && . build/envsetup.sh && brunch hydrogen
