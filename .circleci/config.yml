@@ -19,13 +19,13 @@ jobs:
             export PATH=$PATH:~/bin
             mkdir -p ~/xenon && cd ~/xenon && repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
       - run:
+          name: Adding hydrogen device
+          command: cp -r --parents .repo ~/xenon
+      - run:
           name: Repo sync
           command: |
             export PATH=$PATH:~/bin
             cd ~/xenon && repo sync -c -j4 --quiet
-      - run:
-          name: Adding hydrogen device
-          command: cp -r --parents .repo ~/xenon
       - run:
           name: Building
           command: |
