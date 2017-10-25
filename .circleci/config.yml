@@ -11,7 +11,9 @@ jobs:
             mkdir -p ~/bin
             mkdir -p ~/xenon
             curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
+            echo $PATH
             export PATH=$PATH:~/bin
+            echo $PATH
       - run:
           name: Repo init
           command: |
