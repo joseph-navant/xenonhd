@@ -23,9 +23,9 @@ jobs:
           command: |
             export PATH=$PATH:~/bin
             cd ~/xenon && repo sync -c -j4 --quiet
-      # - run:
-      #     name: Adding hydrogen device
-      #     command: cp -r --parents device/xiaomi ~/xenon
+      - run:
+          name: Adding hydrogen device
+          command: cp -r --parents .repo ~/xenon
       - run:
           name: Building
           command: |
