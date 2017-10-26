@@ -33,7 +33,9 @@ jobs:
           name: Breakfast
           command: |
             export PATH=$PATH:~/bin
-            cd ~/xenon && . build/envsetup.sh && breakfast hydrogen
+            cd ~/xenon
+            . build/envsetup.sh
+            breakfast hydrogen
       - run:
           name: Space left
           command: df -h
