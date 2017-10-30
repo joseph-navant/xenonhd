@@ -8,6 +8,8 @@ env:
 phases:
   install:
     commands:
+      - echo $WORKING_DIR
+      - echo $PATH
       - echo "Downloading repo command"
       - mkdir -p $WORKING_DIR/bin
       - curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $WORKING_DIR/bin/repo && chmod a+x $WORKING_DIR/bin/repo
