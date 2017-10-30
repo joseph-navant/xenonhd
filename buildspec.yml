@@ -1,35 +1,6 @@
 version: 0.2
 
-env:
-  variables:
-    SHELL: "/bin/bash"
-
 phases:
-  install:
-    commands:
-      - echo "Downloading repo command"
-      - mkdir -p $CODEBUILD_SRC_DIR/bin
-      - curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $CODEBUILD_SRC_DIR/bin/repo && chmod a+x $CODEBUILD_SRC_DIR/bin/repo
-      - export PATH=$PATH:$CODEBUILD_SRC_DIR/bin
-  pre_build:
-    commands:
-      - git config --global user.name 'Joseph Morant Navarro'
-      - git config --global user.email 'joseph.morantnavarro@gmail.com'
-      - git config --global color.ui true
-      - mkdir -p $CODEBUILD_SRC_DIR/xenon
-      - echo "Adding hydrogen device"
-      - cp -r --parents .repo $CODEBUILD_SRC_DIR/xenon
-      - cd $CODEBUILD_SRC_DIR/xenon
-      - echo "Initializing repo"
-      - repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
-      - echo "Syncing repo"
-      - repo sync -c -n -j 4 --quiet && repo sync -c -l -j 8 --quiet
-
   build:
     commands:
-      - cd $CODEBUILD_SRC_DIR/xenon
-      - TMPFILE=$(mktemp)
-      - echo ". build/envsetup.sh &&" > $TMPFILE
-      - echo "breakfast hydrogen &&" >> $TMPFILE
-      - echo "brunch hydrogen" >> $TMPFILE
-      - /bin/bash --rcfile $TMPFILE
+      - build.sh
