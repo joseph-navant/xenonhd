@@ -3,16 +3,29 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Downloading repo command"
-      - mkdir -p $CODEBUILD_SRC_DIR/bin && curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $CODEBUILD_SRC_DIR/bin/repo && chmod a+x $CODEBUILD_SRC_DIR/bin/repo
+      - echo $SHELL
+      - which bash
+      #- echo "Downloading repo command"
+      #- mkdir -p $CODEBUILD_SRC_DIR/bin
+      #- curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $CODEBUILD_SRC_DIR/bin/repo && chmod a+x $CODEBUILD_SRC_DIR/bin/repo
   pre_build:
     commands:
-      - git config --global user.name 'Joseph Morant Navarro'
-      - git config --global user.email 'joseph.morantnavarro@gmail.com'
-      - git config --global color.ui true
-      - echo "Adding hydrogen device"
-      - mkdir -p $CODEBUILD_SRC_DIR/xenon && cp -r --parents .repo $CODEBUILD_SRC_DIR/xenon && cd $CODEBUILD_SRC_DIR/xenon && $CODEBUILD_SRC_DIR/bin/repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1 && $CODEBUILD_SRC_DIR/bin/repo sync -c -n -j 4 --quiet && $CODEBUILD_SRC_DIR/bin/repo sync -c -l -j 8 --quiet
+      #- git config --global user.name 'Joseph Morant Navarro'
+      #- git config --global user.email 'joseph.morantnavarro@gmail.com'
+      #- git config --global color.ui true
+      #- mkdir -p $CODEBUILD_SRC_DIR/xenon
+      #- echo "Adding hydrogen device"
+      #- cp -r --parents .repo $CODEBUILD_SRC_DIR/xenon
+      #- cd $CODEBUILD_SRC_DIR/xenon
+      #- echo "Initializing repo"
+      #- repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
+      #- echo "Syncing repo"
+      #- repo sync -c -n -j 4 --quiet && repo sync -c -l -j 8 --quiet
 
   build:
     commands:
-      - cd $CODEBUILD_SRC_DIR/xenon && sh build/envsetup.sh && breakfast hydrogen && brunch hydrogen
+      #- cd $CODEBUILD_SRC_DIR/xenon
+      #- . build/envsetup.sh
+      #- echo "Building..."
+      #- breakfast hydrogen
+      #- brunch hydrogen
