@@ -1,5 +1,9 @@
 version: 0.2
 
+env:
+  variables:
+    SHELL: "/bin/bash"
+
 phases:
   install:
     commands:
@@ -25,7 +29,7 @@ phases:
     commands:
       - cd $CODEBUILD_SRC_DIR/xenon
       - echo '#!/bin/bash' | cat - build/envsetup.sh > temp && mv temp build/envsetup.sh
-      - . build/envsetup.sh
+      - $SHELL build/envsetup.sh
       - echo "Building..."
       - breakfast hydrogen
       - brunch hydrogen
