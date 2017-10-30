@@ -29,7 +29,4 @@ phases:
     commands:
       - cd $CODEBUILD_SRC_DIR/xenon
       - echo '#!/bin/bash' | cat - build/envsetup.sh > temp && mv temp build/envsetup.sh
-      - $SHELL build/envsetup.sh
-      - echo "Building..."
-      - breakfast hydrogen
-      - brunch hydrogen
+      - $SHELL build/envsetup.sh && breakfast hydrogen && brunch hydrogen
