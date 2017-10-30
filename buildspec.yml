@@ -1,0 +1,33 @@
+version: 0.2
+
+env:
+  variables:
+    PATH: "$PATH:~/bin"
+
+phases:
+  install:
+    commands:
+      - echo "Downloading repo command"
+      - mkdir -p ~/bin
+      - curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
+  pre_build:
+    commands:
+      - git config --global user.name 'Joseph Morant Navarro'
+      - git config --global user.email 'joseph.morantnavarro@gmail.com'
+      - git config --global color.ui true
+      - mkdir -p ~/xenon
+      - echo "Adding hydrogen device"
+      - cp -r --parents .repo ~/xenon
+      - cd ~/xenon
+      - echo "Initializing repo"
+      - repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
+      - echo "Syncing repo"
+      - repo sync -c -n -j 4 --quiet && repo sync -c -l -j 8 --quiet
+
+  build:
+    commands:
+      - cd ~/xenon
+      - . build/envsetup.sh
+      - echo "Building..."
+      - breakfast hydrogen
+      - brunch hydrogen
