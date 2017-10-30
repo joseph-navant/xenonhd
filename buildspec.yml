@@ -32,4 +32,4 @@ phases:
       - echo ". build/envsetup.sh &&" > $TMPFILE
       - echo "breakfast hydrogen &&" >> $TMPFILE
       - echo "brunch hydrogen" >> $TMPFILE
-      - $SHELL --rcfile $TMPFILE
+      - /bin/bash --rcfile $TMPFILE
