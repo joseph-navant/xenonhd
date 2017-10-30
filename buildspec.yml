@@ -3,8 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo $SHELL
-      - which bash
+      - echo 'test test test' > envsetup.sh
+      - sed -i '1s/^/#!/bin/bash\n/' envsetup.sh
       #- echo "Downloading repo command"
       #- mkdir -p $CODEBUILD_SRC_DIR/bin
       #- curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $CODEBUILD_SRC_DIR/bin/repo && chmod a+x $CODEBUILD_SRC_DIR/bin/repo
@@ -25,6 +25,7 @@ phases:
   build:
     commands:
       #- cd $CODEBUILD_SRC_DIR/xenon
+      #- sed -i '1s/^/#!/bin/bash\n/' build/envsetup.sh
       #- . build/envsetup.sh
       #- echo "Building..."
       #- breakfast hydrogen
