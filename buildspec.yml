@@ -2,23 +2,24 @@ version: 0.2
 
 env:
   variables:
-    PATH: "$PATH:~/bin"
+    WORKING_DIR: $(pwd)
+    PATH: "$PATH:$WORKING_DIR/bin"
 
 phases:
   install:
     commands:
       - echo "Downloading repo command"
-      - mkdir -p ~/bin
-      - curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
+      - mkdir -p $WORKING_DIR/bin
+      - curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $WORKING_DIR/bin/repo && chmod a+x $WORKING_DIR/bin/repo
   pre_build:
     commands:
       - git config --global user.name 'Joseph Morant Navarro'
       - git config --global user.email 'joseph.morantnavarro@gmail.com'
       - git config --global color.ui true
-      - mkdir -p ~/xenon
+      - mkdir -p $WORKING_DIR/xenon
       - echo "Adding hydrogen device"
-      - cp -r --parents .repo ~/xenon
-      - cd ~/xenon
+      - cp -r --parents .repo $WORKING_DIR/xenon
+      - cd $WORKING_DIR/xenon
       - echo "Initializing repo"
       - repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
       - echo "Syncing repo"
@@ -26,7 +27,7 @@ phases:
 
   build:
     commands:
-      - cd ~/xenon
+      - cd $WORKING_DIR/xenon
       - . build/envsetup.sh
       - echo "Building..."
       - breakfast hydrogen
