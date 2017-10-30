@@ -1,6 +1,11 @@
 version: 0.2
 
 phases:
+  phases:
+  install:
+    commands:
+      - apt-get update -y
+      - apt-get install -y schedtool
   build:
     commands:
       - ./build.sh
