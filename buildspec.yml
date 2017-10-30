@@ -6,6 +6,7 @@ phases:
       - echo "Downloading repo command"
       - mkdir -p $CODEBUILD_SRC_DIR/bin
       - curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $CODEBUILD_SRC_DIR/bin/repo && chmod a+x $CODEBUILD_SRC_DIR/bin/repo
+      - export PATH=$PATH:$CODEBUILD_SRC_DIR/bin
   pre_build:
     commands:
       - git config --global user.name 'Joseph Morant Navarro'
