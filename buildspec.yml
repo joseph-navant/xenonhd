@@ -15,4 +15,4 @@ phases:
 
   build:
     commands:
-      - cd $CODEBUILD_SRC_DIR/xenon && . build/envsetup.sh && breakfast hydrogen && brunch hydrogen
+      - cd $CODEBUILD_SRC_DIR/xenon && sh build/envsetup.sh && breakfast hydrogen && brunch hydrogen
