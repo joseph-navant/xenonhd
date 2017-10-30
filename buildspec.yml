@@ -23,10 +23,13 @@ phases:
       - echo "Initializing repo"
       - repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
       - echo "Syncing repo"
-      - repo sync -c -n -j 4 && repo sync -c -l -j 8
+      - repo sync -c -n -j 4 --quiet && repo sync -c -l -j 8 --quiet
 
   build:
     commands:
       - cd $CODEBUILD_SRC_DIR/xenon
-      - echo '#!/bin/bash' | cat - build/envsetup.sh > temp && mv temp build/envsetup.sh
-      - $SHELL build/envsetup.sh && breakfast hydrogen && brunch hydrogen
+      - TMPFILE=$(mktemp)
+      - echo ". build/envsetup.sh &&" > $TMPFILE
+      - echo "breakfast hydrogen &&" >> $TMPFILE
+      - echo "brunch hydrogen" >> $TMPFILE
+      - $SHELL --rcfile $TMPFILE
