@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Dependencies
-          command: apt-get update -y && apt-get install -y bc schedtool
+          command: sudo apt-get update -y && sudo apt-get install -y bc schedtool
       - run:
           name: Build
           command: ./build.sh
