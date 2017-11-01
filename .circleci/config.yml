@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:latest
+      - image: joseph184/buildrom:0.0.2
     steps:
       - checkout
       - run:
