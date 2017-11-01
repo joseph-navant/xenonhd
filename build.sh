@@ -4,11 +4,6 @@ git config --global user.name 'Joseph Morant Navarro'
 git config --global user.email 'joseph.morantnavarro@gmail.com'
 git config --global color.ui true
 
-if [ $# -eq 1 ]
-then
-	CODEBUILD_SRC_DIR="~"
-fi
-
 mkdir -p $CODEBUILD_SRC_DIR/bin &&
 curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $CODEBUILD_SRC_DIR/bin/repo && chmod a+x $CODEBUILD_SRC_DIR/bin/repo &&
 export PATH=$PATH:$CODEBUILD_SRC_DIR/bin &&

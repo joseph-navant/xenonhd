@@ -1,2 +1,2 @@
 language: cpp
-script: ./build.sh travis
+script: CODEBUILD_SRC_DIR="~" && ./build.sh travis
