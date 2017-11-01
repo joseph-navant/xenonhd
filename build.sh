@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $# -eq 1 ] && [ $1 = 'circleci' ]
+if [ $# -eq 1 ]
 then
 	CODEBUILD_SRC_DIR="~"
 fi

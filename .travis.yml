@@ -1,20 +1,2 @@
 language: cpp
-install:
-  - mkdir -p ~/bin
-  - mkdir -p ~/xenon
-  - curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
-before_script:
-  - cd ~/xenon
-  - git config --global user.name 'Joseph Morant Navarro'
-  - git config --global user.email 'joseph.morantnavarro@gmail.com'
-  - git config --global color.ui true
-  - repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1
-script:
-  - cd ~/xenon
-  - repo sync -c -j32 --quiet
-after_script:
-  - cd ~/xenon
-  - . build/envsetup.sh
-  - breakfast hydrogen
-  - brunch hydrogen
-  - df -h
+script: ./build.sh travis
