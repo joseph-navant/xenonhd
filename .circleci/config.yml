@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: joseph184/buildrom:0.0.2
+      - image: joseph184/buildrom:0.0.3
     steps:
       - checkout
       - run:

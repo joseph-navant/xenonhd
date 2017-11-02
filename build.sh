@@ -7,6 +7,8 @@ git config --global color.ui true
 mkdir -p $HOME/bin &&
 curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $HOME/bin/repo && chmod a+x $HOME/bin/repo &&
 export PATH=$PATH:$HOME/bin &&
+export USE_CCACHE=1 &&
+
 
 mkdir -p $HOME/xenon &&
 cp -r --parents .repo $HOME/xenon &&
