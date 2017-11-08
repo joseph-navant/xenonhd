@@ -8,13 +8,13 @@ mkdir -p $HOME/bin &&
 curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $HOME/bin/repo && chmod a+x $HOME/bin/repo &&
 export PATH=$PATH:$HOME/bin &&
 export USE_CCACHE=1 &&
-export USE_NINJA=false &&
+export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m" &&
 
 
 mkdir -p $HOME/xenon &&
 cp -r --parents .repo $HOME/xenon &&
 
 cd $HOME/xenon &&
-repo init -u https://github.com/joseph184/platform_manifest.git -b n --depth=1 &&
-repo sync -c -n -j 4 --quiet && repo sync -c -l -j 8 --quiet &&
+repo init -u https://github.com/joseph184/platform_manifest.git -b n &&
+repo sync -j 4 &&
 . build/envsetup.sh && breakfast hydrogen && brunch hydrogen
