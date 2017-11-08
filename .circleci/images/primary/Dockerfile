@@ -13,5 +13,3 @@ RUN \
 	apt-get update && \
 	apt-get install -y openjdk-8-jdk
 
-# Disabling ninja
-RUN export USE_NINJA=false

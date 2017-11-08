@@ -8,6 +8,7 @@ mkdir -p $HOME/bin &&
 curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $HOME/bin/repo && chmod a+x $HOME/bin/repo &&
 export PATH=$PATH:$HOME/bin &&
 export USE_CCACHE=1 &&
+export USE_NINJA=false &&
 
 
 mkdir -p $HOME/xenon &&
