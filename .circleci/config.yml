@@ -5,6 +5,42 @@ jobs:
       - image: joseph184/buildrom:0.0.5
     steps:
       - checkout
+      - restore_cache:
+          key: xenon-source-code
       - run:
           name: Build
           command: ./build.sh
+      - save_cache:
+          key: xenon-source-code
+          paths:
+            - ~/xenon/abi
+            - ~/xenon/Android.bp
+            - ~/xenon/art
+            - ~/xenon/bionic
+            - ~/xenon/bootable
+            - ~/xenon/bootstrap.bash
+            - ~/xenon/build
+            - ~/xenon/cts
+            - ~/xenon/dalvik
+            - ~/xenon/developers
+            - ~/xenon/development
+            - ~/xenon/device
+            - ~/xenon/external
+            - ~/xenon/frameworks
+            - ~/xenon/.git
+            - ~/xenon/hardware
+            - ~/xenon/libcore
+            - ~/xenon/libnativehelper
+            - ~/xenon/Makefile
+            - ~/xenon/ndk
+            - ~/xenon/packages
+            - ~/xenon/pdk
+            - ~/xenon/platform_manifest
+            - ~/xenon/platform_testing
+            - ~/xenon/prebuilts
+            - ~/xenon/.repo
+            - ~/xenon/sdk
+            - ~/xenon/system
+            - ~/xenon/toolchain
+            - ~/xenon/tools
+            - ~/xenon/vendor
